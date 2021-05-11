@@ -1,0 +1,5 @@
+[Sat May 01 07:27:50.770097 2021] [cgid:error] [pid 40762:tid 140433879394048] [client 185.233.186.56:33052] AH01264: script not found or unable to stat: /var/www/cgi-bin/config.exp
+[Sat May 01 08:11:49.181682 2021] [cgid:error] [pid 40762:tid 140433963321088] [client 185.233.186.56:58658] AH01264: script not found or unable to stat: /var/www/cgi-bin/config.exp
+[Sat May 01 09:04:11.527707 2021] [cgid:error] [pid 40762:tid 140433963321088] [client 185.233.186.56:58350] AH01264: script not found or unable to stat: /var/www/cgi-bin/config.exp
+[Mon May 10 02:21:25.836807 2021] [autoindex:error] [pid 104810:tid 139744797251328] [client 156.146.63.138:60873] AH01276: Cannot serve directory /var/www/drogviva/public/images/: No matching DirectoryIndex (index.php) found, and server-generated directory index forbidden by Options directive
+[Mon May 10 14:59:40.193294 2021] [autoindex:error] [pid 104427:tid 139744696538880] [client 156.146.63.138:13831] AH01276: Cannot serve directory /var/www/drogviva/public/images/: No matching DirectoryIndex (index.php) found, and server-generated directory index forbidden by Options directive
