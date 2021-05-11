@@ -31,105 +31,48 @@
                         </tr>
                     </thead>
                     <tbody class="theme-body">
-                        <tr>
-                            <th scope="row">
-                                <a href="#" class="link-oragne"><i data-feather="x-square"></i></a>
-                            </th>
-                            <td>
-                                <div class="item-product">
-                                    <span class="img-wrap"><img src="{{asset('images/shop/item-1.jpg')}}" alt=""></span>
-                                    <span>Nombre Producto</span>
-                                </div>
-                            </td>
-                            <td><strong class="txt-blue">$75.00</strong></td>
-                            <td>
-                                <div class="quantity">
-                                    <button class="minus-btn" type="button" name="button">
-                                        <i data-feather="minus"></i>
-                                    </button>                                        
-                                    <input type="text" name="name" value="0">
-                                    <button class="plus-btn" type="button" name="button">
-                                        <i data-feather="plus"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td><strong class="txt-orange">$75.00</strong></td>
-                        </tr>
-                        
-                        <tr>
-                            <th scope="row">
-                                <a href="#" class="link-oragne"><i data-feather="x-square"></i></a>
-                            </th>
-                            <td>
-                                <div class="item-product">
-                                    <span class="img-wrap"><img src="{{asset('images/shop/item-2.jpg')}}" alt=""></span>
-                                    <span>Nombre Producto</span>
-                                </div>
-                            </td>
-                            <td><strong class="txt-blue">$75.00</strong></td>
-                            <td>
-                                <div class="quantity">
-                                    <button class="minus-btn" type="button" name="button">
-                                        <i data-feather="minus"></i>
-                                    </button>                                        
-                                    <input type="text" name="name" value="0">
-                                    <button class="plus-btn" type="button" name="button">
-                                        <i data-feather="plus"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td><strong class="txt-orange">$75.00</strong></td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">
-                                <a href="#" class="link-oragne"><i data-feather="x-square"></i></a>
-                            </th>
-                            <td>
-                                <div class="item-product">
-                                    <span class="img-wrap"><img src="{{asset('images/shop/item-3.jpg')}}" alt=""></span>
-                                    <span>Nombre Producto</span>
-                                </div>
-                            </td>
-                            <td><strong class="txt-blue">$75.00</strong></td>
-                            <td>
-                                <div class="quantity">
-                                    <button class="minus-btn" type="button" name="button">
-                                        <i data-feather="minus"></i>
-                                    </button>                                        
-                                    <input type="text" name="name" value="0">
-                                    <button class="plus-btn" type="button" name="button">
-                                        <i data-feather="plus"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td><strong class="txt-orange">$75.00</strong></td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">
-                                <a href="#" class="link-oragne"><i data-feather="x-square"></i></a>
-                            </th>
-                            <td>
-                                <div class="item-product">
-                                    <span class="img-wrap"><img src="{{asset('images/shop/item-4.jpg')}}" alt=""></span>
-                                    <span>Nombre Producto</span>
-                                </div>
-                            </td>
-                            <td><strong class="txt-blue">$75.00</strong></td>
-                            <td>
-                                <div class="quantity">
-                                    <button class="minus-btn" type="button" name="button">
-                                        <i data-feather="minus"></i>
-                                    </button>                                        
-                                    <input type="text" name="name" value="0">
-                                    <button class="plus-btn" type="button" name="button">
-                                        <i data-feather="plus"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td><strong class="txt-orange">$75.00</strong></td>
-                        </tr>
+                        @if (Cart::count() > 0)
+                            @foreach (Cart::content() as $item)
+                                <tr>
+                                    <th scope="row">
+                                        <a href="#" class="link-oragne"><i data-feather="x-square"></i></a>
+                                    </th>
+                                    <td>
+                                        <div class="item-product">
+                                            @if(file_exists(public_path()."/images/products/".trim($item->codigo).".jpg"))
+                                                <span class="img-wrap">
+                                                    <img src="{{asset('images/products/'.trim($item->codigo).'.jpg')}}" alt="{{$item->name}}">
+                                                </span>
+                                            @else
+                                                <span class="img-wrap">
+                                                    <img src="{{asset('images/products/no_image.png')}}" alt="{{$product['referencia']." ".$product['descripcion']}}">
+                                                </span>
+                                            @endif
+                                            <span>{{$item->name}}</span>
+                                        </div>
+                                    </td>
+                                    <td><strong class="txt-blue">$75.00</strong></td>
+                                    <td>
+                                        <div class="quantity">
+                                            <button class="minus-btn" type="button" name="button">
+                                                <i data-feather="minus"></i>
+                                            </button>                                        
+                                            <input type="text" name="name" value="0">
+                                            <button class="plus-btn" type="button" name="button">
+                                                <i data-feather="plus"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td><strong class="txt-orange">$75.00</strong></td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <th scope="row" colspan="4">
+                                    <strong>No hay items en el carro</strong>
+                                </th>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>

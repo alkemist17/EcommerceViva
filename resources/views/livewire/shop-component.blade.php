@@ -15,7 +15,20 @@
 
 <!-- Main Body Content Start -->
 <main id="body-content">
+    <div class="flex flex-col items-center justify-center">
+        <div>
+            <button wire:click="increment" class="bg-green-500 btn">&plus;</button>
+            <button wire:click="decrement" class="bg-red-500 btn">&minus;</button>
+            <span class="ml-4 font-bold" wire:transition.fade>{{ $count }}</span>
+        </div>
 
+        <div class="flex items-center w-1/2 mt-16">
+            <button wire:click="toggle" class="bg-purple-500 btn">Show Secret</button>
+            @if($isOpen)
+                <span class="ml-4 font-semibold" wire:transition.fade>This was hidden, but now it's shown.</span>
+            @endif
+        </div>
+    </div>
     <!-- Shopping Wide Start -->
     <section class="pb-0 wide-tb-100">
         <div class="container">
@@ -51,12 +64,12 @@
                                 @if ($product['descuento'] > 0)
                                     <span class="product-discount-label">Oferta</span>
                                 @endif
-                                <a class="add-to-cart btn-theme bg-navy-blue capusle" href="{{route('product.details', trim($product['slug']))}}">
+                                <button class="add-to-cart btn-theme bg-navy-blue capusle" wire:click.prevent="store({{$product['id']}},'{{$product['referencia']." ".$product['descripcion']}}',{{$product['precio']}})">
                                     Comprar 
                                     <span class="ml-2"> 
                                         <i data-feather="shopping-bag"></i>
                                     </span>
-                                </a>
+                                </button>
                             </div>
                             <div class="product-content">
                                 <h3 class="title">
@@ -66,10 +79,10 @@
                                 </h3>
                                 <div class="price">
                                     @if ($product['descuento'] > 0)
-                                        <span>${{$product['descuento']}}</span> 
-                                        ${{$product['precio']}}
+                                        <span>${{number_format($product['descuento'])}}</span> 
+                                        ${{number_format($product['precio'])}}
                                     @else
-                                        ${{$product['precio']}}
+                                        ${{number_format($product['precio'])}}
                                     @endif
                                 </div>
                             </div>

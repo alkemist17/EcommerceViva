@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- xxx Change With Your Information xxx -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
@@ -32,7 +33,13 @@
         <link rel="stylesheet" type="text/css" href="{{asset('revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('revolution/fonts/font-awesome/css/font-awesome.css')}}">
             
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
         @livewireStyles
+
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -377,8 +384,6 @@
         <a id="mkdf-back-to-top" href="#" class="off"><i class="icofont-rounded-up"></i></a>
         <!-- Back To Top End -->
 
-        @livewireScripts
-
         <!-- Jquery Library JS -->
         <script src="{{asset('js/jquery.min.js')}}"></script>
         <script src="{{asset('js/theme-plugins.min.js')}}"></script>    
@@ -503,5 +508,6 @@
                 }
             });	/*ready*/
         </script>
+        @livewireScripts
     </body>
 </html>
